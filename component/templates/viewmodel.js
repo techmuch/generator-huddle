@@ -1,6 +1,6 @@
 define(['knockout', 'text!./<%= filename %>.html'], function(ko, templateMarkup) {
 
-	function <%= viewModelClassName %> (params) {
+	function <%= viewModelClassName %> (params, componentInfo) {
 		this.message = ko.observable('Hello from the <%= name %> component!');
 	}
 
