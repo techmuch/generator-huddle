@@ -85,6 +85,11 @@ gulp.task('clean', function() {
     return es.merge(distContents, generatedJs).pipe(clean());
 });
 <% } %>
+
+gulp.task('nw', function(){
+  console.log('\nStarting node-webkit compilation');
+});
+
 gulp.task('default', ['html', 'js', 'css'], function(callback) {
     callback();
     console.log('\nPlaced optimized files in ' + chalk.magenta('dist/\n'));

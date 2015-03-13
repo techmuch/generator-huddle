@@ -1,14 +1,14 @@
 {
-  "name": "generator-ko",
-  "version": "0.1.4",
+  "name": "generator-huddle",
+  "version": "0.1.0",
   "description": "Yeoman generator",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "SteveSanderson/generator-ko",
+  "repository": "techmuch/generator-huddle",
   "author": {
-    "name": "Steven Sanderson",
+    "name": "David Fullmer",
     "email": "",
-    "url": "https://github.com/SteveSanderson"
+    "url": "https://github.com/techmuch"
   },
   "engines": {
     "node": ">=0.10.0"
