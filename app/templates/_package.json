@@ -10,6 +10,7 @@
     "gulp-replace": "~0.2.0",
     "gulp-uglify": "~0.2.1",
     "gulp-html-replace": "~1.0.0",
+    "node-webkit-builder": "^1.0.11",
 <% if(usesTypeScript) { %>
     "gulp-tsc": "^0.7.0",
     "typescript": "1.0.1",
