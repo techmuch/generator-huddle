@@ -48,7 +48,7 @@ var KoGenerator = yeoman.generators.Base.extend({
   askFor: function () {
     var done = this.async();
     this.log(this.yeoman);
-    this.log(chalk.magenta('You\'re using the fantastic Knockout app generator.'));
+    this.log(chalk.magenta('You\'re using the fantastic huddle app generator.'));
 
     var prompts = [{
       name: 'name',
