@@ -52,8 +52,16 @@ var KoGenerator = yeoman.generators.Base.extend({
 
     var prompts = [{
       name: 'name',
-      message: 'What\'s the name of your new site?',
+      message: 'What\'s the name of your new app?',
       default: path.basename(process.cwd())
+    }, {
+      name: 'description',
+      message: 'A good short description of your app?',
+      default: ""
+    }, {
+      name: 'projectId',
+      message: 'What is the project ID in huddle for your app?',
+      default: ""
     }, {
       type: 'list',
       name: 'codeLanguage',
@@ -69,6 +77,8 @@ var KoGenerator = yeoman.generators.Base.extend({
     this.prompt(prompts, function (props) {
       this.longName = props.name;
       this.slugName = this._.slugify(this.longName);
+      this.description = props.description;
+      this.projectId = props.projectId;
       this.usesTypeScript = props.codeLanguage === languageChoice.ts;
       this.includeTests = props.includeTests;
       done();

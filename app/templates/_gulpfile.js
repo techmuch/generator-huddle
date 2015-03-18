@@ -93,7 +93,7 @@ gulp.task('default', ['html', 'js', 'css'], function(callback) {
 
 gulp.task('build', ['default'], function(){
     console.log('\nStarting node-webkit app compilation using files from ' + chalk.magenta('dist/\n'));
-    var fs = require('fs');
+
     var getPackageJson = function () {
         return JSON.parse(fs.readFileSync('./src/package.json', 'utf8'));
     };
@@ -104,7 +104,6 @@ gulp.task('build', ['default'], function(){
       return fs.writeFileSync('./dist/package.json', JSON.stringify(config), 'utf8');
     };
 
-    //gulp.src('./src/package.json').pipe(gulp.dest('./dist/'));
     var pkg = getPackageJson()
     pkg.version = getCurrentVersion()
     setPackageJson(pkg)
@@ -127,5 +126,41 @@ gulp.task('build', ['default'], function(){
         console.log(chalk.green('all done!'));
     }).catch(function (error) {
         console.error(chalk.red(error));
+    });
+});
+
+gulp.task('push', ['default'], function(){
+    
+    var getManifestJson = function () {
+        return JSON.parse(fs.readFileSync('./src/manifest.json', 'utf8'));
+    };
+    var getCurrentVersion = function () {
+      return JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
+    };
+    var setManifestJson = function (config) {
+      return fs.writeFileSync('./dist/manifest.json', JSON.stringify(config), 'utf8');
+    };
+
+    var man = getManifestJson()
+    man.version = getCurrentVersion()
+    setManifestJson(man)
+
+    var releasePath = function(man){
+        var host = 'https://huddle2.asdl.ae.gatech.edu'
+        return host + '/data/' + man.project_id + '/apps/' + man.app_folder
+    }
+
+    var path = releasePath(man);
+
+    console.log('\nPulling files from ' + chalk.magenta('dist/\n'));
+
+    var options = {
+        local_base: "./dist",
+        remote_base: path
+    };
+    var sync = (require('webdav-sync'))(options);
+
+    console.log('\nPushing files to ' + chalk.magenta('path\n'));
+    sync.start();
     });
 });
