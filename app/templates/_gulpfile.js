@@ -113,7 +113,7 @@ gulp.task('build', ['default'], function(){
     var nw = new NwBuilder({
         files: './dist/**/**', // use the glob format
         //platforms: ['win32', 'win64', 'osx32', 'osx64', 'linux32', 'linux64']
-        platforms: ['win64'],
+        platforms: ['win32', 'win64'],
         buildDir: './build'
     });
 
