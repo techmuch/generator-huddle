@@ -91,13 +91,16 @@ gulp.task('default', ['html', 'js', 'css'], function(callback) {
     console.log('\nPlaced optimized files in ' + chalk.magenta('dist/\n'));
 });
 
-gulp.task('nw', ['default'], function(){
+gulp.task('nwbuild', ['default'], function(){
     console.log('\nStarting node-webkit app compilation using files from ' + chalk.magenta('dist/\n'));
+    gulp.src('./src/package.json').pipe(gulp.dest('./dist/'));
+
     var NwBuilder = require('node-webkit-builder');
     var nw = new NwBuilder({
         files: './dist/**/**', // use the glob format
-        //platforms: ['osx32', 'osx64', 'win32', 'win64']
-        platforms: ['win64']
+        //platforms: ['win32', 'win64', 'osx32', 'osx64', 'linux32', 'linux64']
+        platforms: ['win64'],
+        buildDir: './build'
     });
 
     //Log stuff you want
@@ -106,6 +109,7 @@ gulp.task('nw', ['default'], function(){
 
     // Build returns a promise
     nw.build().then(function () {
+        console.log('\nPlaced build files in ' + chalk.magenta('build/\n'));
         console.log(chalk.lime('all done!'));
     }).catch(function (error) {
         console.error(chalk.red(error));
