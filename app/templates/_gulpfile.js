@@ -91,9 +91,23 @@ gulp.task('default', ['html', 'js', 'css'], function(callback) {
     console.log('\nPlaced optimized files in ' + chalk.magenta('dist/\n'));
 });
 
-gulp.task('nwbuild', ['default'], function(){
+gulp.task('build', ['default'], function(){
     console.log('\nStarting node-webkit app compilation using files from ' + chalk.magenta('dist/\n'));
-    gulp.src('./src/package.json').pipe(gulp.dest('./dist/'));
+    var fs = require('fs');
+    var getPackageJson = function () {
+        return JSON.parse(fs.readFileSync('./src/package.json', 'utf8'));
+    };
+    var getCurrentVersion = function () {
+      return JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
+    };
+    var setPackageJson = function (config) {
+      return fs.writeFileSync('./dist/package.json', JSON.stringify(config), 'utf8');
+    };
+
+    //gulp.src('./src/package.json').pipe(gulp.dest('./dist/'));
+    var pkg = getPackageJson()
+    pkg.version = getCurrentVersion()
+    setPackageJson(pkg)
 
     var NwBuilder = require('node-webkit-builder');
     var nw = new NwBuilder({
@@ -109,7 +123,7 @@ gulp.task('nwbuild', ['default'], function(){
 
     // Build returns a promise
     nw.build().then(function () {
-        console.log('\nPlaced build files in ' + chalk.magenta('build/\n'));
+        console.log('\nPlaced build files in ' + chalk.cyan('build/\n'));
         console.log(chalk.lime('all done!'));
     }).catch(function (error) {
         console.error(chalk.red(error));

@@ -1,3 +1,0 @@
-[submodule "app/templates/definitions/node_webkit"]
-	path = app/templates/definitions/node_webkit
-	url = https://github.com/nwjs/nw.js.git
