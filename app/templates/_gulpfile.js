@@ -86,11 +86,28 @@ gulp.task('clean', function() {
 });
 <% } %>
 
-gulp.task('nw', function(){
-  console.log('\nStarting node-webkit compilation');
-});
-
 gulp.task('default', ['html', 'js', 'css'], function(callback) {
     callback();
     console.log('\nPlaced optimized files in ' + chalk.magenta('dist/\n'));
+});
+
+gulp.task('nw', ['default'], function(){
+    console.log('\nStarting node-webkit app compilation using files from ' + chalk.magenta('dist/\n'));
+    var NwBuilder = require('node-webkit-builder');
+    var nw = new NwBuilder({
+        files: './dist/**/**', // use the glob format
+        //platforms: ['osx32', 'osx64', 'win32', 'win64']
+        platforms: ['win64']
+    });
+
+    //Log stuff you want
+
+    nw.on('log',  console.log);
+
+    // Build returns a promise
+    nw.build().then(function () {
+        console.log(chalk.lime('all done!'));
+    }).catch(function (error) {
+        console.error(chalk.red(error));
+    });
 });
