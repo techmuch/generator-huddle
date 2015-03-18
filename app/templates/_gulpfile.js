@@ -124,7 +124,7 @@ gulp.task('build', ['default'], function(){
     // Build returns a promise
     nw.build().then(function () {
         console.log('\nPlaced build files in ' + chalk.cyan('build/\n'));
-        console.log(chalk.lime('all done!'));
+        console.log(chalk.green('all done!'));
     }).catch(function (error) {
         console.error(chalk.red(error));
     });
