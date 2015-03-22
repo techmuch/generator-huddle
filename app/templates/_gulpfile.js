@@ -162,5 +162,4 @@ gulp.task('push', ['default'], function(){
 
     console.log('\nPushing files to ' + chalk.magenta('path\n'));
     sync.start();
-    });
 });
