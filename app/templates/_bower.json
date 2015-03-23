@@ -10,7 +10,13 @@
     "requirejs-text": "~2.0.10",
     "knockout": "~3.3.0-alpha",
     "knockout-projections": "~1.1.0",
-    "huddlejs": "*"
+    "huddlejs": "*",
+    "threejs": "*",
+    "q": "1.1.2",
+    "q-xhr": "0.1.2",
+    "d3": "~3.5.3",
+    "bower-knockout-mapping": "~2.4.1",
+    "famous": "~0.3.4"
   },
   "resolutions": {
     "knockout": "~3.3.0-alpha"
