@@ -1,40 +1,11 @@
-define(['jquery', 'knockout', 'd3', 'text!./<%= filename %>.html'], function($, ko, d3, templateMarkup) {
+define(['knockout', 'text!./<%= filename %>.html'], function(ko, templateMarkup) {
 
-	function <%= viewModelClassName %> (params, componentInfo) {
+	function <%= viewModelClassName %> (params) {
 		var self = this;
-		self.element = componentInfo.element;
-		self.firstRender = ko.observable(true)
-
-		self.data = params.data
-
+		
 		self.header = ko.observable('<%= name %>');
 		self.message = ko.observable('Hello from the <%= name %> component!');
 
-		// list variable common to both render() and update()
-		self.svg = null;
-
-		//debugger;
-
-		self.render = function() {
-
-		}
-		
-		self.update = function() {
-
-		}
-
-		self.reactor = ko.computed(function() {
-			var data = self.data();
-			//debugger;
-			if (typeof data.data !== 'undefined') {
-				if (self.firstRender()) {
-					self.render()
-				} else {
-					self.update()
-				}
-			}
-			return data;
-		})
 	}
 
 	// This runs when the component is torn down. Put here any logic necessary to clean up,
@@ -42,9 +13,7 @@ define(['jquery', 'knockout', 'd3', 'text!./<%= filename %>.html'], function($, 
 	<%= viewModelClassName %>.prototype.dispose = function() {};
 
 	return {
-		viewModel: {
-			createViewModel: <%= viewModelClassName %>
-		},
+		viewModel: <%= viewModelClassName %>,
 		template: templateMarkup
 	};
 

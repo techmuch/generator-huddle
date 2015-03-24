@@ -62,12 +62,12 @@ var KoGenerator = yeoman.generators.Base.extend({
       name: 'projectId',
       message: 'What is the project ID in huddle for your app?',
       default: ""
-    }, {
+    }, /*{
       type: 'list',
       name: 'codeLanguage',
       message: 'What language do you want to use?',
       choices: [languageChoice.js, languageChoice.ts]
-    }, {
+    },*/ {
       type: 'confirm',
       name: 'includeTests',
       message: 'Do you want to include automated tests, using Jasmine and Karma?',
@@ -79,7 +79,7 @@ var KoGenerator = yeoman.generators.Base.extend({
       this.slugName = this._.slugify(this.longName);
       this.description = props.description;
       this.projectId = props.projectId;
-      this.usesTypeScript = props.codeLanguage === languageChoice.ts;
+      this.usesTypeScript = false//props.codeLanguage === languageChoice.ts;
       this.includeTests = props.includeTests;
       done();
     }.bind(this));
