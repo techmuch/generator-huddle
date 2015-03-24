@@ -9,11 +9,11 @@ define(['jquery', 'knockout', './router', 'bootstrap', 'knockout-projections'], 
     template: { require: 'text!components/about-page/about.html' }
   });
 
-  ko.components.register('cadviewer', { require: 'components/cadviewer/cadviewer' });
+  ko.components.register('cadviewer', { require: 'standard_components/cadviewer/cadviewer' });
 
-  ko.components.register('scatter-plot', { require: 'components/scatter-plot/scatter-plot' });
+  ko.components.register('scatter-plot', { require: 'standard_components/scatter-plot/scatter-plot' });
 
-  ko.components.register('datatable', { require: 'components/datatable/datatable' });
+  ko.components.register('datatable', { require: 'standard_components/datatable/datatable' });
 
   // [Scaffolded component registrations will be inserted here. To retain this feature, don't remove this comment.]
 
