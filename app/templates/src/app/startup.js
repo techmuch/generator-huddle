@@ -1,4 +1,4 @@
-define(['jquery', 'knockout', './router', 'bootstrap', 'knockout-projections'], function($, ko, router) {
+define(['jquery', 'knockout', './router', 'dataprovider', 'bootstrap', 'knockout-projections'], function($, ko, router, dp) {
 
   // Components can be packaged as AMD modules, such as the following:
   ko.components.register('nav-bar', { require: 'components/nav-bar/nav-bar' });
@@ -16,6 +16,9 @@ define(['jquery', 'knockout', './router', 'bootstrap', 'knockout-projections'], 
   ko.components.register('datatable', { require: 'standard_components/datatable/datatable' });
 
   // [Scaffolded component registrations will be inserted here. To retain this feature, don't remove this comment.]
+
+  // Make global dataprovider global
+  window.dp = dp
 
   // Start the application
   ko.applyBindings({ route: router.currentRoute });

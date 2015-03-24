@@ -18,7 +18,8 @@
   },
   "files": [
     "app",
-    "component"
+    "component",
+    "d3_component"
   ],
   "keywords": [
     "yeoman-generator"
