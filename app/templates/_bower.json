@@ -16,7 +16,8 @@
     "q-xhr": "0.1.2",
     "d3": "~3.5.3",
     "bower-knockout-mapping": "~2.4.1",
-    "famous": "~0.3.4"
+    "famous": "~0.3.4",
+    "lodash": "~3.6.0"
   },
   "resolutions": {
     "knockout": "~3.3.0-alpha"
