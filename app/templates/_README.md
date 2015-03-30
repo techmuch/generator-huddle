@@ -15,12 +15,12 @@
   - Start the application
 
 ### Required before getting started
-First, your machine must have at minume the following installed:
+First, your machine must have at minimum the following installed:
 
   - node.js
   - npm
 
-follow the appropreate step to install these required tools before proceeding.
+take the appropreate step to install these required tools before proceeding.
 
 ### Clone, Pull Dependancey, Start
 
@@ -36,13 +36,13 @@ change directories into the newly created <%= slugName %>
 $ cd <%= slugName %>
 ```
 
-pull all of the node.js dependancies by typing
+pull all of the node.js dependencies by typing
 
 ```sh
 $ npm update
 ```
 
-pull all of the web application dependanceies by typing
+pull all of the web application dependencies by typing
 
 ```sh
 $ bower update
