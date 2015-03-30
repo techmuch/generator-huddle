@@ -20,7 +20,7 @@ First, your machine must have at minimum the following installed:
   - node.js
   - npm
 
-take the appropreate step to install these required tools before proceeding.
+Take the appropreate steps to install these required tools before proceeding.
 
 ### Clone, Pull Dependancey, Start
 
