@@ -1,0 +1,63 @@
+# <%= longName %>
+-----------------
+
+
+<%= description %>
+
+
+## Getting Started
+
+<%= longName %> is built on top of the Yeomen generator-huddle template. The template utilizes a combination of node.js applications to automate common cross project functions. Getting started is easy with the following steps:
+
+  - Make sure the require software is installed
+  - Clone the github repository
+  - Pull the required dependances
+  - Start the application
+
+### Required before getting started
+First, your machine must have at minume the following installed:
+
+  - node.js
+  - npm
+
+follow the appropreate step to install these required tools before proceeding.
+
+### Clone, Pull Dependancey, Start
+
+Clone the repository by typing
+
+```sh
+$ git clone git@github.gatech.edu:df115/<%= slugName %>.git
+```
+
+change directories into the newly created <%= slugName %>
+
+```sh
+$ cd <%= slugName %>
+```
+
+pull all of the node.js dependancies by typing
+
+```sh
+$ npm update
+```
+
+pull all of the web application dependanceies by typing
+
+```sh
+$ bower update
+```
+
+the application can be served either by the http_server or by first compiling to an executable
+
+for http_server
+
+```sh
+$ http_Server src/
+```
+
+to produce an executable
+
+```sh
+$ gulp build
+```
