@@ -1,5 +1,11 @@
 define(['q','q-xhr','knockout','dataLoader','mapping'], function(q,Q,ko,dl,map) {
 
+	/*
+		The dataprovider (dp) houses the main application logic and the interface for which prepared data is served to widgets
+
+	*/
+
+
 	function grabUrlEncodedVariables(){
 		var o = {};
 		var s = location.search.split('?');
@@ -23,6 +29,14 @@ define(['q','q-xhr','knockout','dataLoader','mapping'], function(q,Q,ko,dl,map) 
 	  	self.urlEncodedVariables = grabUrlEncodedVariables();
 	  	self.resourceUrl = typeof self.urlEncodedVariables.resource_url !== 'undefined' ? self.urlEncodedVariables.resource_url : '';
 	  	
+
+	  	// The following are examples of observable variables look up knockoutjs.org for more information
+	  	// self.variable1 = ko.observable()
+	  	// self.variable2 = ko.observableArray([])
+
+
+	  	// The following is an example of how the dataprovider (dp) can be broken into smaller modules
+	  	// In the example the dl module handles the reading in of data files
 
 	  	/*dl.GET(path)
 	  	.then(function(resp){
