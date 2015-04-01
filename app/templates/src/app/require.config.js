@@ -10,6 +10,7 @@ var require = {
         "knockout-projections": "bower_modules/knockout-projections/dist/knockout-projections",
         "signals":              "bower_modules/js-signals/dist/signals.min",
         "text":                 "bower_modules/requirejs-text/text",
+        "davclient":            "bower_modules/davclient/bin/davclient",
         "huddle":               "bower_modules/huddlejs/api",
         "dataLoader":           "app/dataLoader",
         "dataprovider":         "app/dataprovider",

@@ -4,7 +4,7 @@ var yeoman = require('yeoman-generator');
 var fs = require('fs');
 var chalk = require('chalk');
 
-var ComponentGenerator = yeoman.generators.NamedBase.extend({
+var PageGenerator = yeoman.generators.NamedBase.extend({
 
   detectCodeLanguage: function() {
     this.usesTypeScript = fs.existsSync('src/app/startup.ts');
@@ -13,11 +13,11 @@ var ComponentGenerator = yeoman.generators.NamedBase.extend({
 
   init: function () {
     var codeLanguage = this.usesTypeScript ? 'TypeScript' : 'JavaScript';
-    console.log('Creating component \'' + this.name + '\' (' + codeLanguage + ')...');
+    console.log('Creating page \'' + this.name + '-page\' (' + codeLanguage + ')...');
     this.componentName = this.name;
-    this.dirname = 'src/components/' + this._.dasherize(this.name) + '/';
-    this.filename = this._.dasherize(this.name);
-    this.viewModelClassName = this._.classify(this.name);
+    this.dirname = 'src/components/' + this._.dasherize(this.name+'-page') + '/';
+    this.filename = this._.dasherize(this.name+'-page');
+    this.viewModelClassName = this._.classify(this.name+'-page');
   },
 
   template: function () {
@@ -26,7 +26,7 @@ var ComponentGenerator = yeoman.generators.NamedBase.extend({
     //this.copy('viewmodel' + this.codeFileExtension, this.dirname + this.filename + this.codeFileExtension);
   },
 
-  addComponentRegistration: function() {
+  addPageRegistration: function() {
     var startupFile = 'src/app/startup' + this.codeFileExtension;
     readIfFileExists.call(this, startupFile, function(existingContents) {
         var existingRegistrationRegex = new RegExp('\\bko\\.components\\.register\\(\s*[\'"]' + this.filename + '[\'"]');
@@ -35,13 +35,36 @@ var ComponentGenerator = yeoman.generators.NamedBase.extend({
             return;
         }
 
-        var token = '// [Scaffolded component registrations will be inserted here. To retain this feature, don\'t remove this comment.]',
+        var token = '// [Scaffolded page registrations will be inserted here. To retain this feature, don\'t remove this comment.]',
             regex = new RegExp('^(\\s*)(' + token.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&') + ')', 'm'),
             modulePath = 'components/' + this.filename + '/' + this.filename,
-            lineToAdd = 'ko.components.register(\'' + this.filename + '\', { require: \'' + modulePath + '\' });',
+            lineToAdd = 'ko.components.register(\'' + this.filename + '\', { template: { require: \'text!' + modulePath + '.html\' }});',
             newContents = existingContents.replace(regex, '$1' + lineToAdd + '\n$&');
         fs.writeFile(startupFile, newContents);
         this.log(chalk.green('   registered ') + chalk.white(this.filename) + chalk.green(' in ') + chalk.white(startupFile));
+
+        if (fs.existsSync('gulpfile.js')) {
+            this.log(chalk.magenta('To include in build output, reference ') + chalk.white('\'' + modulePath + '\'') + chalk.magenta(' in ') + chalk.white('gulpfile.js'));
+        }
+    });
+  }
+
+  addRouteRegistration: function() {
+    var routerFile = 'src/app/router' + this.codeFileExtension;
+    readIfFileExists.call(this, routerFile, function(existingContents) {
+        var existingRegistrationRegex = new RegExp("\{\s+url:\s+'"+ this.name +"',\s+params:\s+\{\s+page:\s+'"+ this.name +"-page'\s+\}\s+}");
+        if (existingRegistrationRegex.exec(existingContents)) {
+            this.log(chalk.white(this.filename) + chalk.cyan(' is already registered in ') + chalk.white(routerFile));
+            return;
+        }
+
+        var token = '// [Scaffolded page registrations will be inserted here. To retain this feature, don\'t remove this comment.]',
+            regex = new RegExp('^(\\s*)(' + token.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&') + ')', 'm'),
+            modulePath = 'components/' + this.filename + '/' + this.filename,
+            lineToAdd = 'ko.components.register(\'' + this.filename + '\', { template: { require: \'text!' + modulePath + '.html\' }});',
+            newContents = existingContents.replace(regex, '$1' + lineToAdd + '\n$&');
+        fs.writeFile(routerFile, newContents);
+        this.log(chalk.green('   registered ') + chalk.white(this.filename) + chalk.green(' in ') + chalk.white(routerFile));
 
         if (fs.existsSync('gulpfile.js')) {
             this.log(chalk.magenta('To include in build output, reference ') + chalk.white('\'' + modulePath + '\'') + chalk.magenta(' in ') + chalk.white('gulpfile.js'));
