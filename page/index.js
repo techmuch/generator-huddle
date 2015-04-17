@@ -61,7 +61,7 @@ var PageGenerator = yeoman.generators.NamedBase.extend({
         var token = '// [Scaffolded page registrations will be inserted here. To retain this feature, don\'t remove this comment.]',
             regex = new RegExp('^(\\s*)(' + token.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&') + ')', 'm'),
             modulePath = 'components/' + this.filename + '/' + this.filename,
-            lineToAdd = 'ko.components.register(\'' + this.filename + '\', { template: { require: \'text!' + modulePath + '.html\' }});',
+            lineToAdd = '{ url: '+  this.name +', params: { page: '+  this.name +'-page }},',
             newContents = existingContents.replace(regex, '$1' + lineToAdd + '\n$&');
         fs.writeFile(routerFile, newContents);
         this.log(chalk.green('   registered ') + chalk.white(this.filename) + chalk.green(' in ') + chalk.white(routerFile));
@@ -80,4 +80,4 @@ function readIfFileExists(path, callback) {
     }
 }
 
-module.exports = ComponentGenerator;
+module.exports = PageGenerator;
