@@ -71,7 +71,7 @@ var KoGenerator = yeoman.generators.Base.extend({
       type: 'confirm',
       name: 'includeTests',
       message: 'Do you want to include automated tests, using Jasmine and Karma?',
-      default: true
+      default: false
     }];
 
     this.prompt(prompts, function (props) {
@@ -92,6 +92,7 @@ var KoGenerator = yeoman.generators.Base.extend({
     this.template('_bower.json', 'bower.json');
     this.template('_gulpfile.js', 'gulpfile.js');
     this.template('_gitignore', '.gitignore');
+    this.template('_README.md', 'README.md');
     this.copy('bowerrc', '.bowerrc');
 
     if (this.includeTests) {
