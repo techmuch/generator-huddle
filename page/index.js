@@ -22,8 +22,8 @@ var PageGenerator = yeoman.generators.NamedBase.extend({
 
   template: function () {
     var codeExtension = this.usesTypeScript ? '.ts' : '.js';
-    this.copy('view.html', this.dirname + this.filename + '.html');
-    this.copy('viewmodel' + this.codeFileExtension, this.dirname + this.filename + this.codeFileExtension);
+    this.copy('_view.html', this.dirname + this.filename + '.html');
+    this.copy('_viewmodel' + this.codeFileExtension, this.dirname + this.filename + this.codeFileExtension);
   },
 
   addPageRegistration: function() {
