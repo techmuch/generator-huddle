@@ -4,7 +4,7 @@ var yeoman = require('yeoman-generator');
 var fs = require('fs');
 var chalk = require('chalk');
 
-var ComponentGenerator = yeoman.generators.NamedBase.extend({
+var D3ComponentGenerator = yeoman.generators.NamedBase.extend({
 
   detectCodeLanguage: function() {
     this.usesTypeScript = fs.existsSync('src/app/startup.ts');
@@ -57,4 +57,4 @@ function readIfFileExists(path, callback) {
     }
 }
 
-module.exports = ComponentGenerator;
+module.exports = D3ComponentGenerator;

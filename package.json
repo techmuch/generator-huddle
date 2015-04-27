@@ -19,7 +19,8 @@
   "files": [
     "app",
     "component",
-    "d3_component"
+    "d3_component",
+    "page"
   ],
   "keywords": [
     "yeoman-generator"

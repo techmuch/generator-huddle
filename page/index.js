@@ -47,7 +47,7 @@ var PageGenerator = yeoman.generators.NamedBase.extend({
             this.log(chalk.magenta('To include in build output, reference ') + chalk.white('\'' + modulePath + '\'') + chalk.magenta(' in ') + chalk.white('gulpfile.js'));
         }
     });
-  }
+  },
 
   addRouteRegistration: function() {
     var routerFile = 'src/app/router' + this.codeFileExtension;
