@@ -17,9 +17,10 @@ define(['jquery', 'knockout', './router', 'dataprovider', 'bootstrap', 'knockout
 
   // [Scaffolded component registrations will be inserted here. To retain this feature, don't remove this comment.]
 
-  // Make global dataprovider global
-  window.dp = dp
+  // Make global
+  window.dp = dp;
+  window.router = router;
 
   // Start the application
-  ko.applyBindings({ route: router.currentRoute });
+  ko.applyBindings({ route: router.currentRoute, routes: router.routes });
 });

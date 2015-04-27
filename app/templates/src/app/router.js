@@ -11,13 +11,23 @@ define(["knockout", "crossroads", "hasher"], function(ko, crossroads, hasher) {
 
     return new Router({
         routes: [
-            { url: '',          params: { page: 'home-page' } },
-            { url: 'about',     params: { page: 'about-page' } }
+            { 
+                url: '',
+                label: 'Home',
+                params: { page: 'home-page' } 
+            },
+            {
+                url: 'about',
+                label: 'About',
+                params: { page: 'about-page' } 
+            }
+            //[Scaffolded page registrations will be inserted here. To retain this feature, don't remove this comment.]
         ]
     });
 
     function Router(config) {
         var currentRoute = this.currentRoute = ko.observable({});
+        var routes = this.routes = ko.observable(config.routes);
 
         ko.utils.arrayForEach(config.routes, function(route) {
             crossroads.addRoute(route.url, function(requestParams) {
