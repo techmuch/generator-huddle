@@ -9,6 +9,8 @@ define(['jquery', 'knockout', './router', 'dataprovider', 'bootstrap', 'knockout
     template: { require: 'text!components/about-page/about.html' }
   });
 
+  // [Scaffolded page registrations will be inserted here. To retain this feature, don't remove this comment.]
+
   ko.components.register('cadviewer', { require: 'standard_components/cadviewer/cadviewer' });
 
   ko.components.register('scatter-plot', { require: 'standard_components/scatter-plot/scatter-plot' });

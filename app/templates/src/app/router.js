@@ -21,7 +21,7 @@ define(["knockout", "crossroads", "hasher"], function(ko, crossroads, hasher) {
                 label: 'About',
                 params: { page: 'about-page' } 
             }
-            //[Scaffolded page registrations will be inserted here. To retain this feature, don't remove this comment.]
+            //[Scaffolded route registrations will be inserted here. To retain this feature, don't remove this comment.]
         ]
     });
 
