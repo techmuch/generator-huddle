@@ -23,7 +23,7 @@ var PageGenerator = yeoman.generators.NamedBase.extend({
   template: function () {
     var codeExtension = this.usesTypeScript ? '.ts' : '.js';
     this.copy('view.html', this.dirname + this.filename + '.html');
-    //this.copy('viewmodel' + this.codeFileExtension, this.dirname + this.filename + this.codeFileExtension);
+    this.copy('viewmodel' + this.codeFileExtension, this.dirname + this.filename + this.codeFileExtension);
   },
 
   addPageRegistration: function() {
@@ -38,7 +38,7 @@ var PageGenerator = yeoman.generators.NamedBase.extend({
         var token = '// [Scaffolded page registrations will be inserted here. To retain this feature, don\'t remove this comment.]',
             regex = new RegExp('^(\\s*)(' + token.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&') + ')', 'm'),
             modulePath = 'components/' + this.filename + '/' + this.filename,
-            lineToAdd = 'ko.components.register(\'' + this.filename + '\', { template: { require: \'text!' + modulePath + '.html\' }});',
+            lineToAdd = 'ko.components.register(\'' + this.filename + '\', { require: \'text!' + modulePath + '\' });',
             newContents = existingContents.replace(regex, '$1' + lineToAdd + '\n$&');
         fs.writeFile(startupFile, newContents);
         this.log(chalk.green('   registered ') + chalk.white(this.filename) + chalk.green(' in ') + chalk.white(startupFile));
