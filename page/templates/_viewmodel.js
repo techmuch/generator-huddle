@@ -1,7 +1,7 @@
-define(["knockout", "text!./<%= dirname %>.html"], function(ko, homeTemplate) {
+define(["knockout", "text!./<%= filename %>.html"], function(ko, homeTemplate) {
 
   function HomeViewModel(route) {
-    this.message = ko.observable('Welcome to <%= dirname %>!');
+    this.message = ko.observable('Welcome to <%= filename %>!');
   }
 
   HomeViewModel.prototype.doSomething = function() {

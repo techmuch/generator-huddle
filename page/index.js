@@ -18,6 +18,7 @@ var PageGenerator = yeoman.generators.NamedBase.extend({
     this.dirname = 'src/components/' + this._.dasherize(this.name+'-page') + '/';
     this.filename = this._.dasherize(this.name+'-page');
     this.viewModelClassName = this._.classify(this.name+'-page');
+    this.labelName = this._.capitalize(this.name);
   },
 
   template: function () {
@@ -38,7 +39,7 @@ var PageGenerator = yeoman.generators.NamedBase.extend({
         var token = '// [Scaffolded page registrations will be inserted here. To retain this feature, don\'t remove this comment.]',
             regex = new RegExp('^(\\s*)(' + token.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&') + ')', 'm'),
             modulePath = 'components/' + this.filename + '/' + this.filename,
-            lineToAdd = 'ko.components.register(\'' + this.filename + '\', { require: \'text!' + modulePath + '\' });',
+            lineToAdd = 'ko.components.register(\'' + this.filename + '\', { require: \'' + modulePath + '\' });',
             newContents = existingContents.replace(regex, '$1' + lineToAdd + '\n$&');
         fs.writeFile(startupFile, newContents);
         this.log(chalk.green('   registered ') + chalk.white(this.filename) + chalk.green(' in ') + chalk.white(startupFile));
