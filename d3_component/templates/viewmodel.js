@@ -5,7 +5,7 @@ define(['jquery', 'knockout', 'd3', 'text!./<%= filename %>.html'], function($, 
 		self.element = componentInfo.element;
 		self.firstRender = ko.observable(true)
 
-		self.data = params.data
+		self.data = params.data || ko.observable({})
 
 		// list variable common to both render() and update()
 		self.svg = null;
@@ -23,7 +23,7 @@ define(['jquery', 'knockout', 'd3', 'text!./<%= filename %>.html'], function($, 
 		self.reactor = ko.computed(function() {
 			var data = self.data();
 			//debugger;
-			if (typeof data.data !== 'undefined') {
+			if (typeof data !== 'undefined') {
 				if (self.firstRender()) {
 					self.render()
 				} else {
