@@ -1,13 +1,13 @@
-define(["knockout", "text!./<%= filename %>.html"], function(ko, homeTemplate) {
+define(["knockout", "text!./<%= filename %>.html"], function(ko, Template) {
 
-  function HomeViewModel(route) {
+  function ViewModel(route) {
     this.message = ko.observable('Welcome to <%= filename %>!');
   }
 
-  HomeViewModel.prototype.doSomething = function() {
+  ViewModel.prototype.doSomething = function() {
     this.message('You invoked doSomething() on the viewmodel.');
   };
 
-  return { viewModel: HomeViewModel, template: homeTemplate };
+  return { viewModel: ViewModel, template: Template };
 
 });
