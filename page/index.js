@@ -62,7 +62,7 @@ var PageGenerator = yeoman.generators.NamedBase.extend({
         var token = '// [Scaffolded route registrations will be inserted here. To retain this feature, don\'t remove this comment.]',
             regex = new RegExp('^(\\s*)(' + token.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&') + ')', 'm'),
             modulePath = 'components/' + this.filename + '/' + this.filename,
-            lineToAdd = ',{ url: "'+  this.name +'", label: "'+ this.name +'", params: { page: "'+  this.name +'-page" }},',
+            lineToAdd = ',{ url: "'+  this.name +'", label: "'+ this.name +'", params: { page: "'+  this.name +'-page" }}',
             newContents = existingContents.replace(regex, '$1' + lineToAdd + '\n$&');
         fs.writeFile(routerFile, newContents);
         this.log(chalk.green('   registered ') + chalk.white(this.filename) + chalk.green(' in ') + chalk.white(routerFile));
