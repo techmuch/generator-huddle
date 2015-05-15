@@ -32,6 +32,8 @@ define(['jquery', 'knockout', 'd3', 'text!./<%= filename %>.html'], function($, 
 			}
 			return data;
 		})
+
+		return self;
 	}
 
 	// This runs when the component is torn down. Put here any logic necessary to clean up,

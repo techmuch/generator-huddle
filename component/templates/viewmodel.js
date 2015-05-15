@@ -1,11 +1,12 @@
 define(['knockout', 'text!./<%= filename %>.html'], function(ko, templateMarkup) {
 
-	function <%= viewModelClassName %> (params) {
+	function <%= viewModelClassName %> (params, componentInfo) {
 		var self = this;
 		
 		self.header = ko.observable('<%= name %>');
 		self.message = ko.observable('Hello from the <%= name %> component!');
 
+		return self;
 	}
 
 	// This runs when the component is torn down. Put here any logic necessary to clean up,
@@ -13,7 +14,9 @@ define(['knockout', 'text!./<%= filename %>.html'], function(ko, templateMarkup)
 	<%= viewModelClassName %>.prototype.dispose = function() {};
 
 	return {
-		viewModel: <%= viewModelClassName %>,
+		viewModel: {
+			createViewModel: <%= viewModelClassName %>
+		},
 		template: templateMarkup
 	};
 
