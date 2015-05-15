@@ -17,6 +17,8 @@ define(['jquery', 'knockout', './router', 'dataprovider', 'bootstrap', 'knockout
 
   ko.components.register('datatable', { require: 'standard_components/datatable/datatable' });
 
+  ko.components.register('engrid-simple', { require: 'components/engrid-simple/engrid-simple' });
+
   // [Scaffolded component registrations will be inserted here. To retain this feature, don't remove this comment.]
 
   // Make global

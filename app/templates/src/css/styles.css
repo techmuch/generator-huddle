@@ -1,3 +1,15 @@
-#page {
-	margin-top: 80px;
+html{
+  	height: 100%;
+}
+body {
+	height: 100%;
+  	min-height: 100%;
+  	overflow: hidden;
+}
+#page{
+	top: 52px;
+  	position: relative;
+  	height: 100%;
+  	width: 100%;	
+  	overflow: auto;
 }
