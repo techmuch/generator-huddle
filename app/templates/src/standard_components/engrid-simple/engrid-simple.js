@@ -48,7 +48,7 @@ define(['knockout', 'text!./engrid-simple.html'], function(ko, templateMarkup) {
 		function enGrid(gDivName){				
 			var i;
 			var j;
-			debugger;
+			//debugger;
 			var mWidth = parseInt($('.'+gDivName).width());
 			var mHeight = parseInt($('.'+gDivName).height());
 			var mTop = parseInt($('.'+gDivName).position().top);
