@@ -1,6 +1,6 @@
 {
   "name": "generator-huddle",
-  "version": "0.3.40",
+  "version": "0.3.41",
   "description": "Yeoman generator",
   "license": "MIT",
   "main": "app/index.js",
