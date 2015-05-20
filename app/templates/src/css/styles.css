@@ -12,4 +12,5 @@ body {
   	position: absolute;
   	width: 100%;	
   	overflow: auto;
+  	overflow-x: hidden;
 }
