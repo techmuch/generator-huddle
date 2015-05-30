@@ -7,6 +7,15 @@ var gulp = require('gulp'), rjs = require('gulp-requirejs-bundler'), concat = re
 
 // Config
 var requireJsRuntimeConfig = vm.runInNewContext(fs.readFileSync('src/app/require.config.js') + '; require;');
+var strIncludes = fs.readFileSync('src/app/startup.js').toString();
+    
+    strIncludes = strIncludes.replace(/^\s*\/\/.*\n/gm, '===');
+    //console.log(strIncludes);
+    arrIncludes = strIncludes.match(/'((?:\w|-)+\/(?:\w|-)+)+'/gm);
+    for (var i = 0; i < arrIncludes.length; i++) {
+        arrIncludes[i] = arrIncludes[i].replace(/'/g,"");
+    };
+    //console.log(arrIncludes);
     requireJsOptimizerConfig = merge(requireJsRuntimeConfig, {
         out: 'scripts.js',
         baseUrl: './src',
@@ -14,12 +23,7 @@ var requireJsRuntimeConfig = vm.runInNewContext(fs.readFileSync('src/app/require
         paths: {
             requireLib: 'bower_modules/requirejs/require'
         },
-        include: [
-            'requireLib',
-            'components/nav-bar/nav-bar',
-            'components/home-page/home',
-            'text!components/about-page/about.html'
-        ],
+        include: ['requireLib'].concat(arrIncludes),
         insertRequire: ['app/startup'],
         bundles: {
             // If you want parts of the site to load on demand, remove them from the 'include' list

@@ -11,16 +11,7 @@ define(["knockout", "crossroads", "hasher"], function(ko, crossroads, hasher) {
 
     return new Router({
         routes: [
-            { 
-                url: '',
-                label: 'Home',
-                params: { page: 'home-page' } 
-            },
-            {
-                url: 'about',
-                label: 'About',
-                params: { page: 'about-page' } 
-            }
+             {url: '', label: 'Home', params: { page: 'home-page' }}
             // [Scaffolded route registrations will be inserted here. To retain this feature, don't remove this comment.]
         ]
     });

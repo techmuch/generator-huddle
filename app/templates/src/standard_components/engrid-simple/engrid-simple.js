@@ -49,8 +49,8 @@ define(['knockout', 'text!./engrid-simple.html'], function(ko, templateMarkup) {
 			var i;
 			var j;
 			//debugger;
-			var mWidth = parseInt($('.'+gDivName).width());
-			var mHeight = parseInt($('.'+gDivName).height());
+			var mWidth = parseInt($('.'+gDivName).width()-1);
+			var mHeight = parseInt($('.'+gDivName).height()-2);
 			var mTop = parseInt($('.'+gDivName).position().top);
 			var mLeft = parseInt($('.'+gDivName).position().left);
 			
