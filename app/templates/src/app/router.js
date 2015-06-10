@@ -9,6 +9,8 @@ define(["knockout", "crossroads", "hasher"], function(ko, crossroads, hasher) {
     // Knockout that requires or even knows about this technique. It's just one of
     // many possible ways of setting up client-side routes.
 
+    // route options:
+    // label: false will not show a link on the nav bar
     return new Router({
         routes: [
              {url: '', label: 'Home', params: { page: 'home-page' }}

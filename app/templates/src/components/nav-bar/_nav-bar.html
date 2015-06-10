@@ -17,7 +17,7 @@
     <div class="collapse navbar-collapse">
 
       <ul class="nav navbar-nav" data-bind="foreach: routes">
-        <li data-bind="css: { active: params.page === $parent.route().page }">
+        <li data-bind="css: { active: params.page === $parent.route().page }, visible: label">
           <a href="#" data-bind="attr: {href: '#'+url}, text: label">Home</a>
         </li>
       </ul>
