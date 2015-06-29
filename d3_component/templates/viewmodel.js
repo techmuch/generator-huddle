@@ -1,39 +1,44 @@
 define(['jquery', 'knockout', 'd3', 'text!./<%= filename %>.html'], function($, ko, d3, templateMarkup) {
 
 	function <%= viewModelClassName %> (params, componentInfo) {
-		var self = this;
-		self.element = componentInfo.element;
-		self.firstRender = ko.observable(true)
+		var vm = function(params, componentInfo){
+			var self = this;
+			self.element = componentInfo.element;
+			self.firstRender = ko.observable(true)
 
-		self.data = params.data || ko.observable({})
+			self.data = params.data || ko.observable({})
 
-		// list variable common to both render() and update()
-		self.svg = null;
+			// list variable common to both render() and update()
+			self.svg = null;
 
-		//debugger;
-
-		self.render = function() {
-
-		}
-		
-		self.update = function() {
-
-		}
-
-		self.reactor = ko.computed(function() {
-			var data = self.data();
 			//debugger;
-			if (typeof data !== 'undefined') {
-				if (self.firstRender()) {
-					self.render()
-				} else {
-					self.update()
-				}
-			}
-			return data;
-		})
 
-		return self;
+			self.render = function() {
+
+			}
+			
+			self.update = function() {
+
+			}
+
+			self.reactor = ko.computed(function() {
+				var data = self.data();
+				//debugger;
+				if (typeof data !== 'undefined') {
+					if (self.firstRender()) {
+						self.render()
+					} else {
+						self.update()
+					}
+				}
+				return data;
+			})
+
+			return self;
+
+		}
+
+		return new vm(params)
 	}
 
 	// This runs when the component is torn down. Put here any logic necessary to clean up,
