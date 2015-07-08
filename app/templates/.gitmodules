@@ -1,0 +1,3 @@
+[submodule "src/standard-components"]
+	path = src/standard-components
+	url = git@github.gatech.edu:df115/standard-huddle-components.git

@@ -18,7 +18,8 @@ var require = {
         "q-xhr":                "bower_modules/q-xhr/q-xhr",
         "d3":                   "bower_modules/d3/d3",
         "mapping":              "bower_modules/bower-knockout-mapping/knockout.mapping",
-        "lodash": 				"bower_modules/lodash/lodash"
+        "lodash": 				"bower_modules/lodash/lodash",
+        "documentation":        "documentation/documentation"
     },
     shim: {
         "bootstrap": { deps: ["jquery"] }

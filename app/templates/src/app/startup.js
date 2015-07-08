@@ -1,4 +1,4 @@
-define(['jquery', 'knockout', './router', 'dataprovider', 'bootstrap', 'knockout-projections'], function($, ko, router, dp) {
+define(['jquery', 'knockout', './router', 'dataprovider', 'documentation', 'bootstrap', 'knockout-projections'], function($, ko, router, dp, doc) {
 
   // !!! ALL ko.components.register() line that are commented out will not be compiled in the dist/ !!!
   
@@ -8,19 +8,12 @@ define(['jquery', 'knockout', './router', 'dataprovider', 'bootstrap', 'knockout
 
   // [Scaffolded page registrations will be inserted here. To retain this feature, don't remove this comment.]
 
-  ko.components.register('cadviewer', { require: 'standard_components/cadviewer/cadviewer' });
-
-  ko.components.register('scatter-plot', { require: 'standard_components/scatter-plot/scatter-plot' });
-
-  ko.components.register('datatable', { require: 'standard_components/datatable/datatable' });
-
-  ko.components.register('engrid-simple', { require: 'standard_components/engrid-simple/engrid-simple' });
-
   // [Scaffolded component registrations will be inserted here. To retain this feature, don't remove this comment.]
 
   // Make global
   window.dp = dp;
   window.router = router;
+  window.doc = doc;
 
   // Start the application
   ko.applyBindings({ route: router.currentRoute, routes: router.routes });

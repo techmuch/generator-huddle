@@ -11,6 +11,7 @@ define(["knockout", "crossroads", "hasher"], function(ko, crossroads, hasher) {
 
     // route options:
     // label: false will not show a link on the nav bar
+    // Example of using the experimental mode { url: "st3", label: "ST3", params: { page: "st3-page", experimental: true }}
     return new Router({
         routes: [
              {url: '', label: 'Home', params: { page: 'home-page' }}
@@ -21,13 +22,24 @@ define(["knockout", "crossroads", "hasher"], function(ko, crossroads, hasher) {
     function Router(config) {
         var currentRoute = this.currentRoute = ko.observable({});
         var routes = this.routes = ko.observable(config.routes);
+        var experimentalMode = this.experimentalMode = ko.observable(false);
 
         ko.utils.arrayForEach(config.routes, function(route) {
+            route.visible = ko.computed(function(){
+                if(route.label){
+                    if(typeof route.params.experimental === 'undefined' || !route.params.experimental ||(route.params.experimental && experimentalMode())){
+                        return true;
+                    }
+                }
+                return false;
+            });
             crossroads.addRoute(route.url, function(requestParams) {
                 currentRoute(ko.utils.extend(requestParams, route.params));
             });
         });
-
+        crossroads.bypassed.add(function(request){
+            window.location.hash = '';
+        });
         activateCrossroads();
     }
 

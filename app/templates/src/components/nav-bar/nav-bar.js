@@ -8,6 +8,26 @@ define(['knockout', 'text!./nav-bar.html'], function(ko, template) {
 
     this.route = params.route;
     this.routes = params.routes;
+    this.experimentalMode = params.experimentalMode;
+    this.menuWidth = ko.computed(function(){
+    	return $('.navbar').width() - $('.navbar-header').width() - 33 + 'px'
+    });
+    this.navbarWidth = ko.observable($('.navbar').width())
+    this.toggleExperimentalMode = function(navBarViewModel, event){
+        if(event.ctrlKey){
+            if(this.experimentalMode()){
+                this.experimentalMode(false)
+            }else{
+                this.experimentalMode(true)
+            }
+        }else{
+            window.location.hash = '';
+        }
+    }
+
+    $(window).resize(function(){
+    	this.navbarWidth($('.navbar').width());
+    })
   }
 
   return { viewModel: NavBarViewModel, template: template };
