@@ -1,15 +1,15 @@
 define([
-    "text!/documentation/overview.html",
-    "text!/documentation/st1.html",
-    "text!/documentation/spmr.html",
-    "text!/documentation/datamanager.html",
-    "text!/documentation/experimantalmode.html"
+    "text!./overview.md",
+    "text!./installation.md",
+    "text!./yeomen-commands.md",
+    "text!./using-bower.md",
+    "text!./using-standard-components.md"
   ], function(
-    overview, 
-    st1, 
-    spmr, 
-    datamanager, 
-    experimantalmode
+    overview,
+    installation,
+    yeomenCommands,
+    usingBower,
+    usingStandardComponents
   ){
 
   function Documentation() {
@@ -22,24 +22,24 @@ define([
         contents: overview
       },
       {
-        id: "st1",
-        label: "2.  ST1",
-        contents: st1
+        id: "installation",
+        label: "2.  Installation",
+        contents: installation
       },
       {
-        id: "spmr",
-        label: "3.  SPMR",
-        contents: spmr
+        id: "yeomenCommands",
+        label: "3.  Command Line Features",
+        contents: yeomenCommands
       },
       {
-        id: "datamanager",
-        label: "4.  Data Manager",
-        contents: datamanager
+        id: "usingBower",
+        label: "4.  Using Bower",
+        contents: usingBower
       },
       {
-        id: "experimantalmode",
-        label: "5.  Experimental Mode",
-        contents: experimantalmode
+        id: "usingStandardComponents",
+        label: "5.  Using Standard Components",
+        contents: usingStandardComponents
       }
     ];
   }
